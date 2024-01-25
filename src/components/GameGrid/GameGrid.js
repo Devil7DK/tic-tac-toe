@@ -1,6 +1,6 @@
 import "./GameGrid.scss";
 
-export const GameGrid = ({ values, setValues }) => {
+export const GameGrid = ({ values, setValues, turn, setTurn }) => {
   return (
     <div className="game-grid">
       {values.map((value, index) => (
@@ -10,9 +10,11 @@ export const GameGrid = ({ values, setValues }) => {
           onClick={() => {
             setValues((oldValues) =>
               oldValues.map((value, valueIndex) =>
-                index === valueIndex ? "X" : value
+                index === valueIndex ? turn : value
               )
             );
+
+            setTurn((oldTurn) => (oldTurn === "X" ? "O" : "X"));
           }}
         >
           {value}

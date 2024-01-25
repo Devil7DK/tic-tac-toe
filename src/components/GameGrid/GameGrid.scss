@@ -1,0 +1,19 @@
+div.game-grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5em;
+
+  min-width: 20em;
+  width: 40vw;
+  aspect-ratio: 1 / 1;
+
+  > div.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: max(4em, 8vw);
+    border: 0.1em solid #ccc;
+  }
+}

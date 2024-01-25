@@ -8,6 +8,10 @@ export const GameGrid = ({ values, setValues, turn, setTurn }) => {
           key={index}
           className="cell"
           onClick={() => {
+            if (value) {
+              return;
+            }
+
             setValues((oldValues) =>
               oldValues.map((value, valueIndex) =>
                 index === valueIndex ? turn : value

@@ -1,0 +1,2 @@
+#root{flex-direction:column;justify-content:center;align-items:center;gap:1em;display:flex;position:fixed;inset:0}div.game-grid{grid-gap:.5em;aspect-ratio:1;grid-template-rows:repeat(3,1fr);grid-template-columns:repeat(3,1fr);width:40vw;min-width:20em;display:grid}div.game-grid>div.cell{border:.1em solid #ccc;justify-content:center;align-items:center;font-size:5em;display:flex}
+/*# sourceMappingURL=index.748b6c9a.css.map */

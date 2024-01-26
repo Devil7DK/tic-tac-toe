@@ -62,6 +62,22 @@ export const App = () => {
   // Set up the state for the values of 3x3 grid as an array of 9 with empty strings as default values
   const [values, setValues] = useState(() => new Array(9).fill(""));
 
+  const onGridClick = (index) => {
+    const value = values[index];
+
+    if (value) {
+      return;
+    }
+
+    setValues((oldValues) =>
+      oldValues.map((value, valueIndex) =>
+        index === valueIndex ? turn : value
+      )
+    );
+
+    setTurn((oldTurn) => (oldTurn === "X" ? "O" : "X"));
+  };
+
   useEffect(() => {
     const winner = ["X", "O"].find((player) => {
       return WinningCombinations.find((combination) => {
@@ -89,12 +105,7 @@ export const App = () => {
 
       <h2>Current Player: {turn}</h2>
 
-      <GameGrid
-        values={values}
-        setValues={setValues}
-        turn={turn}
-        setTurn={setTurn}
-      />
+      <GameGrid values={values} onClick={onGridClick} />
     </>
   );
 };

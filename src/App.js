@@ -3,57 +3,7 @@ import "./App.scss";
 import { useEffect, useState } from "react";
 
 import { GameGrid } from "./components";
-
-const WinningCombinations = [
-  /**
-   * [X, X, X]
-   * [?, ?, ?]
-   * [?, ?, ?]
-   */
-  [0, 1, 2],
-  /**
-   * [?, ?, ?]
-   * [X, X, X]
-   * [?, ?, ?]
-   */
-  [3, 4, 5],
-  /**
-   * [?, ?, ?]
-   * [?, ?, ?]
-   * [X, X, X]
-   */
-  [6, 7, 8],
-  /**
-   * [X, ?, ?]
-   * [X, ?, ?]
-   * [X, ?, ?]
-   */
-  [0, 3, 6],
-  /**
-   * [?, X, ?]
-   * [?, X, ?]
-   * [?, X, ?]
-   */
-  [1, 4, 7],
-  /**
-   * [?, ?, X]
-   * [?, ?, X]
-   * [?, ?, X]
-   */
-  [2, 5, 8],
-  /**
-   * [X, ?, ?]
-   * [?, X, ?]
-   * [?, ?, X]
-   */
-  [0, 4, 8],
-  /**
-   * [?, ?, X]
-   * [?, X, ?]
-   * [X, ?, ?]
-   */
-  [2, 4, 6],
-];
+import { getWinner, isDraw } from "./utils";
 
 export const App = () => {
   // State to keep track of the current player
@@ -79,23 +29,17 @@ export const App = () => {
   };
 
   useEffect(() => {
-    const winner = ["X", "O"].find((player) => {
-      return WinningCombinations.find((combination) => {
-        return combination.every((index) => values[index] === player);
-      });
-    });
+    const winner = getWinner(values);
 
     if (winner) {
       alert(`${winner} won!`);
       setValues(new Array(9).fill(""));
+      setTurn("X");
       return;
-    }
-
-    const isDraw = values.every((value) => value !== "");
-
-    if (isDraw) {
+    } else if (isDraw(values)) {
       alert("Draw!");
       setValues(new Array(9).fill(""));
+      setTurn("X");
     }
   }, [values]);
 

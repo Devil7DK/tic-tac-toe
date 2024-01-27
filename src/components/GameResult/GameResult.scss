@@ -23,7 +23,7 @@ div.game-result {
     padding: 1em;
 
     > svg.game-grid {
-      width: 10em;
+      width: min(10em, 60vw);
     }
   }
 }

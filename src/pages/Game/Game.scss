@@ -6,8 +6,33 @@ div.game-container {
   justify-content: center;
   flex: 1;
 
-  > svg.game-grid {
+  > svg.game-grid,
+  > div.game-grid-container {
     min-width: 20em;
     width: 40vw;
+  }
+
+  > div.game-grid-container {
+    position: relative;
+
+    > svg.game-grid {
+      width: 100%;
+    }
+
+    > div.game-grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+
+      background-color: #00000080;
+      color: #ffffff;
+      font-size: 2em;
+      backdrop-filter: blur(0.1em);
+
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

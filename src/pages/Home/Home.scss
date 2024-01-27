@@ -9,23 +9,4 @@ div.game-modes {
 
   box-shadow: 0 0 0.5em 0.05em #c1e0fd;
   border-radius: 0.5em;
-
-  > a {
-    text-decoration: none;
-    padding: 0.5em;
-    color: #5db1ff;
-
-    border: 0.1em solid #5db1ff;
-    border-radius: 0.5em;
-
-    text-align: center;
-
-    &:hover {
-      background-color: #c1e0fd;
-    }
-
-    &:visited {
-      color: #5db1ff;
-    }
-  }
 }

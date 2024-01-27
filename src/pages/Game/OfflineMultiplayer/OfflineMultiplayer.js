@@ -3,7 +3,7 @@ import "./OfflineMultiplayer.scss";
 import { useEffect, useState } from "react";
 
 import { GameGrid, showResult } from "../../../components";
-import { getWinner, isDraw } from "../../../utils";
+import { getResult } from "../../../utils";
 
 export const OfflineMultiplayer = () => {
   // State to keep track of the current player
@@ -29,12 +29,10 @@ export const OfflineMultiplayer = () => {
   };
 
   useEffect(() => {
-    const winner = getWinner(values);
+    const result = getResult(values);
 
-    if (winner) {
-      showResult(values, winner, false);
-    } else if (isDraw(values)) {
-      showResult(values, null, true);
+    if (result.winner || result.isDraw) {
+      showResult(result);
     }
   }, [values]);
 

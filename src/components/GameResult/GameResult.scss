@@ -22,12 +22,8 @@ div.game-result {
     border-radius: 0.5em;
     padding: 1em;
 
-    > div.game-grid {
+    > svg.game-grid {
       width: 10em;
-
-      > div.cell {
-        font-size: 2em;
-      }
     }
   }
 }

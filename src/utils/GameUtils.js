@@ -1,3 +1,17 @@
+/**
+ * @typedef {[number, number, number]} WinningCombination
+ *
+ * @typedef Result
+ *
+ * @property {boolean} isDraw Whether the game is a draw
+ * @property {"X" | "O" | null} winner Winner of the game
+ * @property {WinningCombination?} winningCombination Winning combination of the game
+ * @property {string[]} values Values of the 3x3 grid as an array of 9 strings
+ */
+
+/**
+ * @type {WinningCombination[]}
+ */
 const WinningCombinations = [
   /**
    * [X, X, X]
@@ -50,29 +64,50 @@ const WinningCombinations = [
 ];
 
 /**
- * Get the winner of the game
+ * Get the result of the game
  *
- * @param {string[]} values Array of 9 strings containing the values of the 3x3 grid
+ * @param {string[]} values Values of the 3x3 grid as an array of 9 strings
  *
- * @returns {"X" | "O" | false | null} The winner of the game or null if there is no winner yet
+ * @returns {Result} Result of the game
  */
-export const getWinner = (values) => {
-  return (
-    ["X", "O"].find((player) => {
-      return WinningCombinations.find((combination) => {
-        return combination.every((index) => values[index] === player);
-      });
-    }) || null
-  );
+export const getResult = (values) => {
+  const winningCombination = WinningCombinations.find((combination) => {
+    const [a, b, c] = combination;
+
+    return values[a] && values[a] === values[b] && values[a] === values[c];
+  });
+
+  if (winningCombination) {
+    const [a] = winningCombination;
+
+    return {
+      isDraw: false,
+      winner: values[a],
+      winningCombination,
+      values,
+    };
+  }
+
+  const isDraw = values.every((value) => value !== "");
+
+  return {
+    isDraw,
+    winner: null,
+    winningCombination: null,
+    values,
+  };
 };
 
 /**
- * Check if the game is a draw
+ * Get x and y coordinates of the 3x3 grid from the index
  *
- * @param {string[]} values Array of 9 strings containing the values of the 3x3 grid
+ * @param {number} index Index of array of 9 strings containing the values of the 3x3 grid
  *
- * @returns {boolean} True if the game is a draw, false otherwise
+ * @returns {{x: number, y: number}} x and y coordinates of the 3x3 grid
  */
-export const isDraw = (values) => {
-  return values.every((value) => value !== "");
+export const getXYFromIndex = (index) => {
+  return {
+    x: index % 3,
+    y: Math.floor(index / 3),
+  };
 };

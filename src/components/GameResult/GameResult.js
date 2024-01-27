@@ -4,36 +4,24 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GameGrid } from "../GameGrid/GameGrid";
 
-export const showResult = (values, winner, isDraw) => {
+export const showResult = (result) => {
   document.dispatchEvent(
     new CustomEvent("showResult", {
-      detail: {
-        values,
-        winner,
-        isDraw,
-      },
+      detail: result,
     })
   );
 };
 
 export const GameResult = () => {
-  const [values, setValues] = useState(() => new Array(9).fill(""));
-  const [winner, setWinner] = useState(null);
-  const [isDraw, setIsDraw] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [result, setResult] = useState(null);
 
   const onClick = () => {
-    setIsOpen(false);
+    setResult(null);
   };
 
   useEffect(() => {
     const onShowResult = (event) => {
-      const { values, winner, isDraw } = event.detail;
-
-      setValues(values);
-      setWinner(winner);
-      setIsDraw(isDraw);
-      setIsOpen(true);
+      setResult(event.detail);
     };
 
     document.addEventListener("showResult", onShowResult);
@@ -44,16 +32,19 @@ export const GameResult = () => {
   }, []);
 
   return (
-    isOpen && (
+    result && (
       <div className="game-result">
         <div className="result-container">
-          {isDraw ? (
+          {result.isDraw ? (
             <div className="game-result-text">It's a draw!</div>
           ) : (
-            <div className="game-result-text">{winner} won!</div>
+            <div className="game-result-text">{result.winner} won!</div>
           )}
 
-          <GameGrid values={values} />
+          <GameGrid
+            values={result.values}
+            lineIndices={result.winningCombination}
+          />
 
           <Link to="/" className="blue-button" onClick={onClick}>
             Play Again

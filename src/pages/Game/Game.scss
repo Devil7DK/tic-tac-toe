@@ -6,12 +6,8 @@ div.game-container {
   justify-content: center;
   flex: 1;
 
-  > div.game-grid {
+  > svg.game-grid {
     min-width: 20em;
     width: 40vw;
-
-    > div.cell {
-      font-size: max(4em, 8vw);
-    }
   }
 }

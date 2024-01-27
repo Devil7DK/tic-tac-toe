@@ -1,16 +1,9 @@
-div.game-grid {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.5em;
-
+svg.game-grid {
   aspect-ratio: 1 / 1;
 
-  > div.cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  pointer-events: none;
 
-    border: 0.1em solid #ccc;
+  > g {
+    pointer-events: all;
   }
 }

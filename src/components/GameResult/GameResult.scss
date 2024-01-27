@@ -1,0 +1,33 @@
+div.game-result {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00000080;
+
+  > div.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+
+    font-size: 2em;
+    background-color: #ffffff;
+
+    border-radius: 0.5em;
+    padding: 1em;
+
+    > div.game-grid {
+      width: 10em;
+
+      > div.cell {
+        font-size: 2em;
+      }
+    }
+  }
+}

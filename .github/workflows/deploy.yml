@@ -21,6 +21,10 @@ jobs:
           node-version: 18.x
       - name: Install node modules
         run: yarn install
+      - name: Write .env from secrets
+        run: echo "${ENV_FILE}" > .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
       - name: Build
         run: yarn build
       - name: Deploy
@@ -29,4 +33,3 @@ jobs:
           branch: gh-pages
           folder: dist
           token: ${{ secrets.GITHUB_TOKEN }}
-      

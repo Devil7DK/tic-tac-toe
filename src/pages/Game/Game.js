@@ -1,6 +1,6 @@
 import "./Game.scss";
 
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 
 import { AnonymousMultiplayer } from "./AnonymousMultiplayer/AnonymousMultiplayer";
 import { OfflineMultiplayer } from "./OfflineMultiplayer/OfflineMultiplayer";
@@ -18,6 +18,10 @@ export const Game = () => {
 
         <Route path="*" element={<Navigate to="offline" />} />
       </Routes>
+
+      <Link className="blue-button home" to="/">
+        Back to Home
+      </Link>
     </>
   );
 };

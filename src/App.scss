@@ -4,9 +4,13 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 1em;
+  overflow: hidden;
+}
+
+h1,
+h2 {
+  text-align: center;
 }
 
 a.blue-button {

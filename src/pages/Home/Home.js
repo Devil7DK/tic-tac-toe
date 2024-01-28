@@ -3,7 +3,7 @@ import "./Home.scss";
 
 export const Home = () => {
   return (
-    <>
+    <div className="home-page-container">
       <h1>Tic Tac Toe</h1>
 
       <div className="game-modes">
@@ -36,6 +36,6 @@ export const Home = () => {
           Online Multiplayer
         </Link>
       </div>
-    </>
+    </div>
   );
 };

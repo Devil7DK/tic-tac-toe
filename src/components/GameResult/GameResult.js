@@ -37,14 +37,18 @@ export const GameResult = () => {
         <div className="result-container">
           {result.isDraw ? (
             <div className="game-result-text">It's a draw!</div>
-          ) : (
+          ) : result.winner ? (
             <div className="game-result-text">{result.winner} won!</div>
+          ) : (
+            <div className="game-result-text">Game ended! Player left!</div>
           )}
 
-          <GameGrid
-            values={result.values}
-            lineIndices={result.winningCombination}
-          />
+          {result.values && (
+            <GameGrid
+              values={result.values}
+              lineIndices={result.winningCombination}
+            />
+          )}
 
           <Link to="/" className="blue-button" onClick={onClick}>
             Play Again

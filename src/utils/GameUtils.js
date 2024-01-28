@@ -6,7 +6,7 @@
  * @property {boolean} isDraw Whether the game is a draw
  * @property {"X" | "O" | null} winner Winner of the game
  * @property {Combination?} winningCombination Winning combination of the game
- * @property {string[]} values Values of the 3x3 grid as an array of 9 strings
+ * @property {string[]?} values Values of the 3x3 grid as an array of 9 strings
  */
 
 /**

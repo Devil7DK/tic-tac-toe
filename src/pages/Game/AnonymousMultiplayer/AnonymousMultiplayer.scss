@@ -1,0 +1,21 @@
+div.game-container.anonymous-multiplayer {
+  position: relative;
+
+  > div.loading-overlay {
+    position: absolute;
+    inset: 0;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    background-color: #00000080;
+    backdrop-filter: blur(0.5em);
+
+    > div.status-text {
+      color: #ffffff;
+      font-size: 2em;
+      font-weight: 600;
+    }
+  }
+}
